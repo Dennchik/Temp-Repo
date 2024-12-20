@@ -30,7 +30,7 @@ export const AboutCompany = ({baseUrl}) => {
 					</div>
 				</div>
 				<div className="about-company__footer">
-					<a className="about-company__button btn-grad"
+					<a className="about-company__button"
 						 href={getPath('about.html')}>читать всё</a>
 				</div>
 			</div>
@@ -56,12 +56,11 @@ export const AboutCompany = ({baseUrl}) => {
 					</div>
 				</div>
 				<div className="about-company__footer">
-					<a className="about-company__button btn-grad"
+					<a className="about-company__button"
 						 href={getPath('services.html')}
 						 type="button">читать всё</a>
 				</div>
 			</div>
-
 			<div className="about-company__column el-3">
 				<div className="about-company__body">
 					<div className="about-company__title">НАША КОМАНДА</div>
@@ -71,19 +70,19 @@ export const AboutCompany = ({baseUrl}) => {
 								<div className="team-mates__image">
 									<picture> {isWebpSupported()
 										? <img src={getPath(
-											'img/teammates/team-1.webp')} alt="image" />
+											'img/footer/team-1.webp')} alt="image" />
 										: <img src={getPath(
-											'img/teammates/team-1.png')} alt="image" />}
+											'img/footer/team-1.png')} alt="image" />}
 									</picture>
 								</div>
 							</li>
 							<li>
 								<div className="team-mates__name">
-									Георгий Дудунов
+									<a href="#">Георгий Дудунов</a>
 								</div>
 								<div className="team-mates__text">
 									<p>Георгий - основатель студии и&nbsp;ведущий звукорежиссер.
-										Инженер.</p>
+										Engineer.</p>
 								</div>
 							</li>
 						</ul>
@@ -93,15 +92,15 @@ export const AboutCompany = ({baseUrl}) => {
 									<picture>
 										{isWebpSupported()
 											? <img src={getPath(
-												'img/teammates/team-2.webp')} alt="image" />
+												'img/footer/team-2.webp')} alt="image" />
 											: <img src={getPath(
-												'img/teammates/team-2.png')} alt="image" />}
+												'img/footer/team-2.png')} alt="image" />}
 									</picture>
 								</div>
 							</li>
 							<li>
 								<div className="team-mates__name">
-									Ryan Gosling
+									<a href="#">Ryan Gosling</a>
 								</div>
 								<div className="team-mates__text">
 									<p>Райан - ассистент звукорежиссера в&nbsp;студии
@@ -115,15 +114,15 @@ export const AboutCompany = ({baseUrl}) => {
 									<picture>
 										{isWebpSupported()
 											? <img src={getPath(
-												'img/teammates/team-3.webp')} alt="image" />
+												'img/footer/team-3.webp')} alt="image" />
 											: <img src={getPath(
-												'img/teammates/team-3.png')} alt="image" />}
+												'img/footer/team-3.png')} alt="image" />}
 									</picture>
 								</div>
 							</li>
 							<li>
 								<div className="team-mates__name">
-									Ryan Gosling
+									<a href="#">Ryan Gosling</a>
 								</div>
 								<div className="team-mates__text">
 									<p>Райан - ассистент звукорежиссера в&nbsp;студии
@@ -137,18 +136,19 @@ export const AboutCompany = ({baseUrl}) => {
 									<picture>
 										{isWebpSupported()
 											? <img src={getPath(
-												'img/teammates/team-4.webp')} alt="image" />
+												'img/footer/team-4.webp')} alt="image" />
 											: <img src={getPath(
-												'img/teammates/team-4.png')} alt="image" />}
+												'img/footer/team-4.png')} alt="image" />}
 									</picture>
 								</div>
 							</li>
 							<li>
 								<div className="team-mates__name">
-									Маргарита Калан
+									<a href="#">Маргарита Калан</a>
 								</div>
 								<div className="team-mates__text">
-									<p>Певица, композитор, поэтесса.</p>
+									<p>Adam is the studio’s founder and leading sound
+										engineer.</p>
 								</div>
 							</li>
 						</ul>

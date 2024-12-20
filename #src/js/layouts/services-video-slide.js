@@ -16,7 +16,7 @@ export function Slide(
 			speed: 800,
 			grabCursor: true,
 			spaceBetween: 30,
-			slidesPerView: 5,
+			slidesPerView: 6,
 			// autoHeight: true,
 			// loop: true,
 			// mousewheel: true,
@@ -47,6 +47,11 @@ export function Slide(
 					spaceBetween: 30,
 					slidesPerView: 5,
 				},
+
+				1440: {
+					spaceBetween: 40,
+					slidesPerView: 6,
+				}
 			}
 		});
 	}

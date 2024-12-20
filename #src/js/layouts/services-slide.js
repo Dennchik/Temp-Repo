@@ -25,22 +25,21 @@ export function servicesSlide(
 				clickable: true,
 			},
 			breakpoints: {
-				280: {
+				320: {
 					slidesPerView: 2,
-					spaceBetween: 15,
 				},
 				// 330: {
 				// 	slidesPerView: 2,
 				// 	spaceBetween: 20,
 				// },
 				491: {
-					slidesPerView: 3, spaceBetween: 30,
+					slidesPerView: 3,
 				},
 				768: {
-					slidesPerView: 4, spaceBetween: 30,
+					slidesPerView: 4,
 				},
 				1025: {
-					slidesPerView: 5, spaceBetween: 30,
+					slidesPerView: 5,
 				}
 			}
 		});

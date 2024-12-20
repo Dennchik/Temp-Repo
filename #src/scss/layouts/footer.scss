@@ -1,30 +1,30 @@
 @use '../core/all' as *;
 
 .footer {
+	// .footer__content
+	&__content {
+		position: relative;
+
+		&::before {
+			position: absolute;
+			width: 100%;
+			height: 1px;
+			content: '';
+			background: linear-gradient(to left top, #8164ff 40%, rgb(42, 53, 20) 70%);
+		}
+	}
 
 	// .footer__contacts
 	&__contacts {
-		position: relative;
-		z-index: 3;
-		background-size: 111% 200%;
 		padding: 2rem 0;
+		background: #332764;
+	}
 
-		&:before {
-			content: '';
-			position: absolute;
-			top: 0;
-			height: 100%;
-			width: 100%;
-			z-index: -1;
-			background-size: 111% 200%;
-			background-position: 0 0;
-			background-image: linear-gradient(
-											-45deg,
-											#20193bff 10%,
-											#332764 73%,
-											#020101 83%
-			);
-		}
+	// .footer__title
+	&__title {
+		font-size: 2rem;
+		margin-bottom: 2.5rem;
+		text-shadow: 1px 1px 1px $neon-pink;
 	}
 
 	&__item-services {
@@ -57,12 +57,6 @@
 		}
 	}
 
-	// .footer__info
-	&__info {
-		position: relative;
-		z-index: 2;
-	}
-
 	// .footer__community
 	&__community {
 		.community {
@@ -71,7 +65,7 @@
 				display: flex;
 				align-items: center;
 				justify-content: space-between;
-				padding: 5rem 0 100px;
+				padding: 5rem 0 10rem;
 
 				@include screen-490 {
 					align-items: flex-start;
@@ -127,6 +121,7 @@
 				display: flex;
 				align-items: center;
 				flex-wrap: nowrap;
+				margin-left: 1rem;
 				padding: 0.5rem 0;
 				transition: color 0.4s ease-in-out;
 				text-transform: uppercase;
@@ -144,12 +139,13 @@
 	&__help {
 		font-size: 4.8rem;
 		display: flex;
-
+		
 		align-items: center;
 		justify-content: center;
-		padding-bottom: 5rem;
+		padding: 8rem 0;
 		text-align: center;
 		color: $gray;
+		text-shadow: 3px 3px 10px #000;
 
 		i {
 			margin: 0 3rem;
@@ -161,7 +157,7 @@
 			}
 
 			@include screen-425 {
-				margin: 0 2rem;
+				margin: 3rem 2rem;
 			}
 
 			&:hover {
@@ -172,7 +168,13 @@
 				}
 			}
 		}
+
+		@include minmax-320-1920 {
+			// padding: calc(px + ( - 80	) * ((100vw - px) / ( - )));
+
+		}
 	}
+
 }
 
 .contacts {
@@ -183,16 +185,18 @@
 		width: 100%;
 		text-shadow: 2px 2px 4px #000;
 		grid-template-columns: repeat(3, auto);
-		column-gap: 1.5rem;
+		column-gap: 3rem;
 		row-gap: 2rem;
 
 		@include minmax-490-768 {
 			grid-template-columns: repeat(2, auto);
+
 		}
 
 		@include screen-490 {
 			grid-template-columns: repeat(1, 1fr);
 		}
+
 	}
 
 	// .contacts__item
@@ -204,32 +208,29 @@
 		}
 
 		&:nth-child(1) {
-			@include screen-490 {
+			@include minmax-425-768 {
 				grid-row: 1/3;
 			}
-			@include screen-490 {
+			@include minmax-425-490 {
 				grid-column: 1 / 3;
 			}
 		}
 
 		&:nth-child(3) {
-			@include screen-490 {
+			@include minmax-425-490 {
 				grid-column: 2/3;
 			}
+
 		}
 
 		i {
-			margin-right: 1rem;
+			margin-right: 1.5rem;
 		}
 
 		a {
 			font-size: 1.4rem;
 			display: flex;
 			align-items: center;
-
-			@include screen-320 {
-				font-size: 1.2rem;
-			}
 		}
 
 		[class*='icon-'] {
@@ -264,10 +265,6 @@
 	// .contacts__text
 	&__text {
 		font-size: 1.4rem;
-
-		@include screen-320 {
-			font-size: 1.2rem;
-		}
 
 		p {
 			line-height: 170%;

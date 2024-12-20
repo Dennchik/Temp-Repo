@@ -93,19 +93,19 @@ export const VideoSlide = ({baseUrl}) => {
 						preload="auto"
 						loop
 						muted
-						poster={getPath('img/audio/showreel-1.png')}
-						src={getPath('img/audio/showreel-2.mp4')}>
+					>
+						<source src={getPath('img/audio/showreel-2.mp4')}
+										type="video/mp4" />
 					</video>
 				</div>
 				<div className="main-video__content _container">
 					<h1 className="main-slide__title el-slidetitle h1_01901">
 						<span>Видеопродакшн. Создаем</span>
-						<span>видеоролики под&nbsp;ключ</span>
+						<span>видеоролики под ключ</span>
 					</h1>
 					<div className="main-slide__text t_01901">
 						<i className="icon-angles-left-solid _icon"></i>&nbsp;Подготовим КП,
-						а&nbsp;именно напишем идеи и&nbsp;сделаем&nbsp;смету&nbsp;
-						<i className="icon-angles-right-solid _icon"></i>
+						а&nbsp;именно напишем идеи и сделаем смету&nbsp;«
 					</div>
 					<div className="offer-container__button _open-button">
 						<button className="order-button btn-grad"
@@ -114,6 +114,7 @@ export const VideoSlide = ({baseUrl}) => {
 						</button>
 					</div>
 				</div>
+
 			</div>
 		</div>
 	);

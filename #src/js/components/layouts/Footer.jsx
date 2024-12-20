@@ -8,7 +8,7 @@ import {
 } from '../../animations/animations.jsx';
 import { AboutCompany } from '../chunks/AboutCompany.jsx';
 //* ----------------------------------------------------------------------------
-export const Footer = ({baseUrl, isHomePage}) => {
+export const Footer = ({ baseUrl, isHomePage }) => {
 	useEffect(() => {
 		const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 		if (!isMobile) {
@@ -19,24 +19,21 @@ export const Footer = ({baseUrl, isHomePage}) => {
 			}
 		}
 	}, []);
-	const getPath = (fileName) => {
-		return `${baseUrl}/${fileName}`;
-	};
+
 	return (
 		<Element className="footer">
 			<div className="footer__content">
 				<div className="footer__info _container">
 					{isHomePage && <AboutCompany baseUrl={baseUrl} />}
+					<div className='hr-shelf'></div>
 					<div className="footer__help el-4">
-						<a href={getPath('about.html')}>
+						<a href={'about.html'}>
 							<i className="icon-achievements">
 							</i>
 						</a>
-						<a href="tel:++79106044424">
-							<i className="icon-services"></i>
-						</a>
+						<i className="icon-services"></i>
 						<i className="icon-reviews"></i>
-						<a href="mailto:studio@obninsk-gusli.ru">
+						<a href="mailto:mailto:studio@obninsk-gusli.ru">
 							<i className="icon-contacts"></i>
 						</a>
 					</div>
@@ -61,7 +58,7 @@ export const Footer = ({baseUrl, isHomePage}) => {
 								</a>
 							</div>
 							<div className="contacts__item">
-								<a href="mailto:studio@obninsk-gusli.ru">
+								<a href="mailto:mailto:studio@obninsk-gusli.ru">
 									<i className="icon-enve-mail"></i>
 									<span>studio@obninsk-gusli.ru</span>
 								</a>

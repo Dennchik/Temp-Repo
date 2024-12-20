@@ -8,12 +8,8 @@
 	&__body {
 		display: inline-flex;
 		flex-direction: column;
+		padding: 10rem 0;
 		justify-content: center;
-		padding: 6rem 0;
-
-		@include min-1140 {
-			padding: 10rem 0;
-		}
 	}
 
 	// .questions__title
@@ -28,26 +24,55 @@
 		z-index: 9;
 		display: inline;
 		margin-bottom: 4rem;
+		padding-bottom: 2rem;
 		text-align: center;
 		letter-spacing: 0;
 		color: $neon-blue;
+		perspective-origin: 45% 320%;
+		transform-style: preserve-3d;
 		perspective: 100px;
 		filter: $filter;
 
 		@include minmax-320-1920 {
-			font-size: calc(24px + (60 - 24) * ((100vw - 320px) / (1920 - 320)));
+			font-size: calc(20px + (50 - 20) * ((100vw - 320px) / (1920 - 320)));
 		}
 
-		@include screen-320 {
-			font-size: 24px;
+		@include screen-490 {
+			font-size: 20px;
+			line-height: 120%;
+			margin-bottom: 2rem;
+		}
+
+		&::before {
+			position: absolute;
+			z-index: -1;
+			top: 0;
+			left: 0;
+			height: 100%;
+			content: '';
+			transform: translate(0, 10%);
+		}
+
+		&::after {
+			font: {
+				weight: 900;
+			}
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 70%;
+			content: 'Вопросы и ответы';
+			transform: rotateX(15deg) translateZ(-5px);
+			@extend .shadow-after;
 		}
 	}
 
 	// .questions__list
 	&__list {
 		max-width: 1240px;
-		padding: 2rem;
-		border-radius: 4px;
+		padding: 1rem 1rem 0 1rem;
+		border-radius: 1rem;
 		backdrop-filter: blur(20px);
 		border: 1px solid rgba(128, 128, 128, 0.09);
 		box-shadow: 0 0 7px 10px rgba(0, 0, 0, 0.1);
@@ -56,9 +81,8 @@
 
 	// .questions__item
 	&__item {
-
+		margin-bottom: 2rem;
 		&:not(:last-child) {
-			margin-bottom: 2rem;
 			border-bottom: 1px solid #4e4e4e;
 		}
 
@@ -83,11 +107,12 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding-bottom: 20px;
+		padding-bottom: 2rem;
 
 		.icon-angles-down-solid {
-			transition: scale 0.4s,
-			color 0.4s ease-in-out;
+			transition:
+				scale 0.4s,
+				color 0.4s ease-in-out;
 			pointer-events: none;
 			padding: 0 2rem;
 			text-shadow: 0 0 1px $liquid-neon;
@@ -137,11 +162,7 @@
 		p {
 			opacity: 0.7;
 			line-height: 155%;
-			margin-bottom: 1rem;
-
-			&:last-child {
-				margin-bottom: 30px;
-			}
+			margin-bottom: 2rem;
 
 			a {
 				display: inline-block;
@@ -158,7 +179,6 @@
 
 		li {
 			list-style: disc inside;
-			opacity: 0.7;
 		}
 	}
 }

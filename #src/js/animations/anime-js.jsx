@@ -83,16 +83,16 @@ export function timeLineHeaderItem() {
 		targets: '.header__item',
 		opacity: [0, 1],
 		translateY: [-100, 0],
-		delay: anime.stagger(100, {start: 100}),
+		delay: anime.stagger(100, { start: 100 }),
 		easing: 'easeInOutSine',
 		begin: function (anim) {
 			anim.animatables.forEach(function (animatable) {
-				animatable.target.style.transition = 'all 0.3s ease-out';
+				animatable.target.style.transition = 'all 0.5s ease-out';
 			});
 		}
 	}).add({
 		targets: '.header__item',
-		delay: anime.stagger(100, {start: 500}),
+		delay: anime.stagger(100, { start: 500 }),
 		easing: 'easeInOutSine',
 	}, '-=250').add({
 		targets: '.el-logo',
@@ -103,7 +103,7 @@ export function timeLineHeaderItem() {
 		easing: 'easeInOutSine',
 		begin: function (anim) {
 			anim.animatables.forEach(function (animatable) {
-				animatable.target.style.transition = 'opacity 0.3s ease-out';
+				animatable.target.style.transition = 'opacity 0.5s ease-out';
 			});
 		}
 	}, 50).add({
@@ -111,13 +111,13 @@ export function timeLineHeaderItem() {
 		opacity: [0, 1],
 		translateX: [200, 0],
 
-		translateY: [9, 10],
+		translateY: [9, 9],
 		// rotate: [-90, 0],
 		duration: 1250,
 		easing: 'easeInOutSine',
 		begin: function (anim) {
 			anim.animatables.forEach(function (animatable) {
-				animatable.target.style.transition = 'opacity 0.3s ease-out';
+				animatable.target.style.transition = 'opacity 0.5s ease-out';
 			});
 		}
 	}, 50);
@@ -133,7 +133,7 @@ export function fadeInSlide() {
 		targets: '.swiper-slide-active .main-slide__title',
 		opacity: [0, 1],
 		translateY: [80, 0],
-		delay: anime.stagger(100, {start: 500}),
+		delay: anime.stagger(100, { start: 500 }),
 		easing: 'easeInOutSine',
 		duration: 1000,
 		begin: function (anim) {
@@ -145,7 +145,7 @@ export function fadeInSlide() {
 		targets: '.swiper-slide-active .main-slide__text',
 		opacity: [0, 1],
 		translateY: [100, 0],
-		delay: anime.stagger(100, {start: 500}),
+		delay: anime.stagger(100, { start: 500 }),
 		duration: 1000,
 		easing: 'easeInOutSine',
 		begin: function (anim) {
@@ -158,7 +158,7 @@ export function fadeInSlide() {
 
 //* --------------------------- Анимация линий ---------------------------------
 export function animationSvgLine(target, reverse) {
-	const path = target.querySelector('.services-slide__image .lines path');
+	const path = target.querySelector('.services-slide__svg .lines path');
 	// Создаем переменную path
 	anime({
 		targets: path,

@@ -7,7 +7,7 @@ import {
 } from '../../../animations/animations.jsx';
 
 //* ----------------------------------------------------------------------------
-export const SectionPromotion = ({baseUrl}) => {
+export const SectionPromotion = ({ baseUrl }) => {
 	const isHomepage = location.pathname === '/';
 	const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
@@ -35,14 +35,14 @@ export const SectionPromotion = ({baseUrl}) => {
 					<div className="parallax__image">
 						<picture>
 							{isWebpSupported() ? (
-									<img className="parallax__image-services bg"
-											 src={getPath('img/parallax/sound/fotoram_bg_09.webp')}
-											 alt="image" />
-								)
+								<img className="parallax__image-services bg"
+									src={getPath('img/parallax/sound/fotoram_bg_09.webp')}
+									alt="image" />
+							)
 								: (
 									<img className="parallax__image-services bg"
-											 src={getPath('img/parallax/sound/fotoram_bg_09.png')}
-											 alt="image" />
+										src={getPath('img/parallax/sound/fotoram_bg_09.png')}
+										alt="image" />
 								)}
 						</picture>
 					</div>
