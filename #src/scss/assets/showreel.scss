@@ -1,0 +1,41 @@
+.main-video {
+	// .main-video__body
+	&__body {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
+
+	// .main-video__content
+	&__content {
+		position: absolute;
+		padding-right: 6rem;
+	}
+
+	// .main-video__box
+	&__box {
+		height: 100vh;
+		video {
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			object-fit: cover;
+			object-position: center;
+		}
+	}
+}
+// .vjs-control-bar,
+// .vjs-modal-dialog,
+// .vjs-loading-spinner,
+// .vjs-text-track-display,
+// .video-js .vjs-control-bar,
+// .video-js .vjs-big-play-button {
+// 	display: none;
+// }
+
+// .player-id-dimensions {
+// 	width: 100% !important;
+// }
