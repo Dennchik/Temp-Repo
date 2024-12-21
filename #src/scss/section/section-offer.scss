@@ -11,9 +11,12 @@
 	&__body {
 		display: inline-flex;
 		flex-direction: column;
-		padding: 10rem 0;
 		justify-content: center;
-		// color: #3636363f;
+		padding: 6rem 0;
+
+		@include min-1140 {
+			padding: 10rem 0;
+		}
 	}
 
 	// .offer-container__title
@@ -23,64 +26,35 @@
 			size: 5rem;
 			weight: normal;
 		}
+
 		line-height: 100%;
 		position: relative;
 		z-index: 9;
 		display: inline;
-		margin-bottom: 4rem;
-		padding-bottom: 2rem;
 		text-align: center;
 		letter-spacing: 0;
 		color: $neon-blue;
-		perspective-origin: 45% 320%;
-		transform-style: preserve-3d;
 		perspective: 100px;
 		filter: $filter;
 
-		@include minmax-320-1920 {
-			font-size: calc(20px + (50 - 20) * ((100vw - 320px) / (1920 - 320)));
-		}
+		@extend .font-size-calc-h2;
 
 		@include screen-490 {
-			font-size: 20px;
-			line-height: 120%;
-			margin-bottom: 2rem;
-		}
-
-		&::before {
-			position: absolute;
-			z-index: -1;
-			top: 0;
-			left: 0;
-			height: 100%;
-			content: '';
-			transform: translate(0, 10%);
-		}
-
-		&::after {
-			font: {
-				weight: 900;
-			}
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 70%;
-			content: 'специальное предложение';
-			transform: rotateX(15deg) translateZ(-5px);
-			@extend .shadow-after;
+			font-size: 24px;
 		}
 	}
 
 	// .offer-container__content
 	&__content {
 		display: grid;
+		padding: 6rem 0;
 		height: 100%;
 		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto auto;
 		gap: 2rem;
 
 		@include max-690 {
+			padding: 4rem 0;
 			grid-template-columns: 1fr;
 		}
 	}
@@ -155,6 +129,7 @@
 
 		span {
 			font-size: 2.4rem;
+			font-weight: 500;
 
 			&:nth-child(1) {
 				margin-right: 2rem;
@@ -184,7 +159,6 @@
 	// .offer-container__button
 	&__button {
 		border-radius: 7px;
-		margin-top: 5rem;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -201,33 +175,6 @@
 
 			.order-button {
 				animation: shadow-pulse 0;
-			}
-		}
-
-		.order-button {
-			border: 0;
-			border-radius: 7px;
-			color: white;
-			font-size: 1.6rem;
-			font-weight: 500;
-			box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1),
-			0 6px 6px rgba(0, 0, 0, 0.05);
-			transition: all 0.5s ease-in-out;
-			animation: shadow-pulse 1.5s infinite;
-		}
-
-		button {
-			transition: color 0.5s ease-in-out;
-			position: relative;
-			z-index: 9;
-			display: inline-flex;
-			padding: 2rem 5rem;
-			text-transform: uppercase;
-			font-weight: 400;
-			overflow: hidden;
-
-			span {
-				text-shadow: 1px 1px 1px #000;
 			}
 		}
 	}

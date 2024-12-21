@@ -25,7 +25,7 @@ body {
 	0 0 0.2em #00f;
 	// overscroll-behavior: none;
 	font: 1.6rem/1.6 $font-default;
-	background: $color;
+	background: $black-color;
 
 	&.no-scroll {
 		overflow: hidden;
@@ -50,12 +50,11 @@ body {
 	box-sizing: border-box;
 }
 
-img {
-	vertical-align: top;
-}
-
 img,
 svg {
+	vertical-align: top;
+	user-select: none;
+	pointer-events: none;
 	height: auto;
 	max-width: 100%;
 }

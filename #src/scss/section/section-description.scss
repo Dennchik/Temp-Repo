@@ -3,45 +3,51 @@
 .service-description {
 	// .service-description__column
 	&__column {
+		position: relative;
 		display: flex;
 		flex-direction: column;
-		position: relative;
-		z-index: 99;
-		height: 100%;
-		min-height: 100vh;
+		z-index: 19;
 		overflow: hidden;
-		@extend .gradient-neon-color;
+		@extend .gradient-neon-revers;
 
-		&:not(:first-child) {
-			&::before {
-				position: absolute;
-				width: 100%;
-				height: 1px;
-				content: '';
-				background: linear-gradient(to left top, #8164ff 40%, #2a3514 70%);
-			}
+		&._parallax-column {
+			background-color: $color;
 		}
-	}
-
-	.parallax__image {
-		filter: sepia(50%) hue-rotate(10deg);
 	}
 
 	// .service-description_body
 	&__body {
+		position: relative;
 		display: flex;
-		flex-direction: column;
-		flex: 1 1 auto;
-		height: 100%;
-		min-height: 100%;
-		padding: 10rem 0;
+		padding: 6rem 0;
+		z-index: 9;
+
+		&::before {
+			content: '';
+			height: 1px;
+			width: 100%;
+
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			z-index: -1;
+			background-image: linear-gradient(
+				to left,
+				rgb(56, 31, 71) 30%,
+				rgb(2, 1, 1) 70%
+			);
+		}
+
+		@include min-1140 {
+			padding: 10rem 0;
+		}
 	}
 
 	// .service-description__content
 	&__content {
-		display: flex;
 		flex: 1 1 auto;
-		height: 100%;
+		display: flex;
 		justify-content: center;
 		flex-direction: column;
 		align-items: center;
@@ -59,10 +65,15 @@
 		position: relative;
 		z-index: 9;
 		display: inline;
-		margin-bottom: 6rem;
+		margin-bottom: 4rem;
 		letter-spacing: 0;
 		color: $neon-blue;
 		filter: $filter;
+		text-transform: uppercase;
+
+		span {
+			font-family: $font-family-secondary;
+		}
 
 		@include minmax-320-1920 {
 			font-size: calc(27px + (60 - 27) * ((100vw - 320px) / (1920 - 320)));
@@ -75,145 +86,51 @@
 		@include screen-320 {
 			font-size: 27px;
 		}
-
-		&::before {
-			position: absolute;
-			z-index: -1;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 70%;
-			content: '';
-		}
-
-		&:nth-child(1) {
-			perspective-origin: 45% 320%;
-			transform-style: preserve-3d;
-			perspective: 100px;
-
-			&::before {
-				transform: translate(0, 58%);
-			}
-
-			&::after {
-				font: {
-					weight: 900;
-				}
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 70%;
-				transform: rotateX(15deg) translateZ(-11px);
-				@extend .shadow-after;
-			}
-		}
-
-		&.musician-title {
-			&::after {
-				content: 'cонграйтинг';
-			}
-		}
-
-		&.recording-title {
-			&::after {
-				content: 'звукозапись';
-			}
-		}
-
-		&.arrangement-title {
-			&::after {
-				content: 'aранжировка';
-			}
-		}
-
-		&.bits-title {
-			&::after {
-				content: 'биты';
-			}
-		}
-
-		&.session-musicians-title {
-			&::after {
-				content: 'сессионные музыканты';
-			}
-		}
-
-		&.sound-design-title {
-			&::after {
-				content: 'Звуковой дизайн';
-			}
-		}
-
-		&.audio-podcasts-title {
-			&::after {
-				content: 'аудио подкасты';
-			}
-		}
-
-		&.voice-acting-title {
-			&::after {
-				content: 'дикторская озвучка';
-			}
-		}
-
-		&.dubbing-title {
-			&::after {
-				content: 'дубляж';
-			}
-		}
-
-		&.mastering-title {
-			&::after {
-				content: 'cведение и мастеринг';
-			}
-		}
-
-		&.collections-title {
-			&::after {
-				content: 'создание сборников';
-			}
-		}
-
-		&.anthem-title {
-			&::after {
-				content: 'корпоративный гимн';
-			}
-		}
-
-		&.distribution-title {
-			&::after {
-				content: 'дистрибуция';
-			}
-		}
 	}
 
 	//.service-description__description
 	&__description {
+		position: relative;
 		font-size: 20px;
 		width: 100%;
 		max-width: 1240px;
 		padding: 3rem 2rem;
 		border-radius: 1rem;
-		backdrop-filter: blur(2px);
 		border: 1px solid rgba(128, 128, 128, 0.09);
 		box-shadow: 0 0 7px 10px rgba(0, 0, 0, 0.1);
-		background: rgba(28, 21, 63, 0.144);
+		background: rgba(28, 21, 63, 0.13);
+
+		&:before {
+			content: '';
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			filter: blur(4px);
+			z-index: -1;
+		}
 
 		[class*='icon-'] {
 			display: inline-flex;
 			font-size: 1.8rem;
-			color: $electric-lime;
 		}
 
 		.icon-guitar-line,
 		.icon-volume-high,
-		.icon-musical-notes {
+		.icon-musical-notes,
+		.icon-camera-film,
+		.icon-clapper,
+		.icon-head-phones,
+		.icon-snow {
 			color: $neon-blue-dark;
 		}
 
-		.icon-group {
-			font-size: 1.2rem;
+		.icon-check,
+		.icon-hand-pointer,
+		.icon-piano {
+			opacity: 0.6;
+			color: $electric-lime;
 
 			&::before {
 				font-weight: 300;
@@ -226,22 +143,39 @@
 
 		.icon-hand-pointer {
 			transform: rotate(90deg);
+			// background: linear-gradient();
 		}
 
 		h2 {
 			margin-bottom: 2rem;
-			font-size: 24px;
+			font-size: 30px;
 			font-weight: 450;
 			color: $neon-blue;
-			opacity: 0.5;
+			opacity: 0.8;
 			line-height: 110%;
-
-			@include minmax-320-1920 {
-				font-size: calc(16px + (24 - 16) * ((100vw - 320px) / (1920 - 320)));
-			}
 
 			&:not(:first-child) {
 				margin-top: 4rem;
+			}
+
+			@include minmax-320-1920 {
+				font-size: calc(20px + (30 - 20) * ((100vw - 320px) / (1920 - 320)));
+			}
+
+			@include screen-320 {
+				font-size: 20px;
+			}
+		}
+
+		h3 {
+			font-size: 2.2px;
+			opacity: 0.8;
+			font-weight: 500;
+			margin: 0 0 10px;
+			color: $neon-blue;
+
+			@include minmax-320-1920 {
+				font-size: calc(16px + (22 - 16) * ((100vw - 320px) / (1920 - 320)));
 			}
 
 			@include screen-320 {
@@ -250,7 +184,11 @@
 		}
 
 		p {
-			margin-bottom: 1.5rem;
+			opacity: 0.8;
+
+			&:not(:last-child) {
+				margin-bottom: 1.5rem;
+			}
 		}
 
 		span {
@@ -259,7 +197,10 @@
 		}
 
 		li {
+			opacity: 0.9;
+
 			span {
+				display: inline-block;
 				color: $electric-lime;
 			}
 
@@ -272,77 +213,68 @@
 			font-size: calc(12px + (20 - 12) * ((100vw - 320px) / (1920 - 120)));
 		}
 
+		@include max-375 {
+			padding: 3rem 1.3rem;
+		}
+
 		@include screen-320 {
 			font-size: 12px;
 		}
 	}
 
-	// .service-description__linck
-	&__linck {
+	// .service-description__link
+	&__link {
 		color: $neon-blue;
-		opacity: 0.6;
-		font-size: 14px;
+		@extend .link_underline;
+		transition: opacity 0.4s ease;
 
-		@include minmax-320-1920 {
-			font-size: calc(10px + (14 - 10) * ((100vw - 320px) / (1920 - 120)));
+		&:hover {
+			opacity: 0.5;
 		}
-
-		@include screen-320 {
-			font-size: 10px;
-		}
-	}
-
-	// .service-description__sub-items
-	&__sub-items {
-		margin: 1rem 0 1rem 3rem;
 	}
 
 	// .service-description__row
 	&__row {
 		width: 100%;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+		gap: 3rem;
+
+		&:not(:last-child) {
+			margin-bottom: 3rem;
+		}
+
+		._icon {
+			margin: 0.7rem 1.5rem 0 0;
+			align-self: flex-start;
+		}
 
 		&:not(:last-child) {
 			margin-bottom: 4rem;
 		}
+	}
 
-		h3 {
-			margin: 1.6rem 0;
-			color: $electric-lime;
-		}
-
+	// .service-description__row-col
+	&__row-col {
 		ul {
-			padding: 2rem 0;
+			&:not(:last-child) {
+				margin-bottom: 2rem;
+			}
 		}
 
 		li {
 			display: flex;
-
-			div {
-				display: inline;
-
-				&:not(:last-child) {
-					flex: 0 0 20rem;
-					width: 20rem;
-					margin-right: 1rem;
-					font-weight: 600;
-					color: $neon-blue-dark;
-					@include max-490 {
-						flex: 0 0 13rem;
-						width: 13rem;
-					}
-				}
-			}
 		}
 	}
 
 	//.service-description__ps
 	&__ps {
-		font-size: 14px;
-		opacity: 0.7;
-		margin: 2rem 0 3rem;
+		font-size: 16px;
+		opacity: 1 !important;
+		color: #9983ec;
 
 		@include minmax-320-1920 {
-			font-size: calc(10px + (14 - 10) * ((100vw - 320px) / (1920 - 120)));
+			font-size: calc(12px + (16 - 10) * ((100vw - 320px) / (1920 - 120)));
 		}
 
 		@include screen-320 {
@@ -355,5 +287,17 @@
 		width: 100%;
 		height: auto;
 		object-fit: cover;
+	}
+
+	// .service-description__button
+	&__button {
+		margin-top: 40px;
+		border-radius: 7px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		align-self: center;
+		box-shadow: 0 0 6px #000;
 	}
 }

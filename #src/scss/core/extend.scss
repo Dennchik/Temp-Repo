@@ -1,6 +1,26 @@
 @use 'variables' as *;
 @use 'mixins.scss' as *;
 
+.box-shadow {
+	box-shadow: 0 1px 10px #020101;
+}
+
+.font-size-calc-h2 {
+	@include minmax-490-1920 {
+		font-size: calc(28px + (50 - 28) * ((100vw - 490px) / (1920 - 490)));
+	}
+}
+
+.top-box {
+	padding: 6rem 0;
+	padding-top: calc(6rem + 64px) !important;
+
+	@include min-1440 {
+		padding: 10rem 0;
+		min-height: 100vh;
+	}
+}
+
 .pagination {
 	display: flex;
 	align-items: center;
@@ -42,62 +62,110 @@
 
 	/* Размер фона для каждого слоя */
 	background-image: linear-gradient(to left, transparent, transparent),
-	linear-gradient(
-									to left,
-									var(--background-selected),
-									var(--font-color-active)
-	);
+		linear-gradient(
+			to left,
+			var(--background-selected),
+			var(--font-color-active)
+		);
 
 	/* Позиционирование фона */
 	background-repeat: no-repeat;
 
 	/* Повторение фона */
-	background-position: 100% 100%,
-		/* Первое изображение */
-	0 100%; /* Второе изображение */
+	background-position:
+		100% 100%,
+		/* Первое изображение */ 0 100%; /* Второе изображение */
 
 	/* Переход для изменения размера фона */
-	background-size: 100% 1px,
-		/* Первое изображение */
-	0 1px; /* Второе изображение */
+	background-size:
+		100% 1px,
+		/* Первое изображение */ 0 1px; /* Второе изображение */
 }
 
 .gradient-black {
 	background-image: linear-gradient(-45deg, #1b0d39, #020101 70%);
 }
 
-.gradient-default {
-	background: linear-gradient(
-									to left,
-									rgb(11, 8, 19) 0%,
-									rgb(43, 38, 68) 0%,
-									rgb(11, 8, 19) 100%
-	);
+.gradient-neon-revers {
+	background: radial-gradient(
+			at 95% 7%,
+			rgba(50, 38, 98, 0.45) 0px,
+			transparent 50%
+		),
+		radial-gradient(at -15% 102%, rgba(50, 38, 98, 0.45) 0px, transparent 50%);
 }
 
 .gradient-neon-color {
-	// background-image: linear-gradient(to left, #1b0d39, #0d081c 70%);
 	background: radial-gradient(
-									at 2.2240887065805293% 71.24496017695185%,
-									$custom-100, $custom-200, $custom-300),
-	radial-gradient(at -58.35886343001991% 70.7398580943191%,
-									$custom-400, $custom-700, $custom-700),
-	radial-gradient(at 134.35886343001991% 12.7398580943191%,
-									$custom-400, $custom-500, $custom-600),
-	radial-gradient(at 54.35886343001991% 94.7398580943191%,
-									$custom-400, $custom-500, $custom-600)
+			at -15% 1%,
+			rgba(50, 38, 98, 0.45) 0px,
+			transparent 50%
+		),
+		radial-gradient(at 90% 90%, rgba(50, 38, 98, 0.45) 0px, transparent 50%);
 }
 
-//* ----------------------------------------------------------------------------
+.gradient-border-before {
+	&::before {
+		content: '';
+		height: 1px;
+		width: 100%;
 
-//* ----------------------------------------------------------------------------
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		background-image: linear-gradient(to left, #381f47 30%, rgb(2, 1, 1) 65%);
+	}
+}
+
+.gradient-border-before-revers {
+	&::before {
+		content: '';
+		height: 1px;
+		width: 100%;
+
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 1;
+		background-image: linear-gradient(to right, #381f47 30%, rgb(2, 1, 1) 65%);
+	}
+}
+
+.gradient-border-after {
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		width: 100%;
+		z-index: 1;
+		background-image: linear-gradient(to right, #381f47 30%, rgb(2, 1, 1) 65%);
+	}
+}
+
+.gradient-border-after-revers {
+	&::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		height: 1px;
+		width: 100%;
+		z-index: 1;
+		background-image: linear-gradient(to left, #381f47 30%, rgb(2, 1, 1) 65%);
+	}
+}
 
 .gradient-spec {
 	background-image: linear-gradient(
-									-45deg,
-									rgb(23, 14, 49) 0%,
-									rgba(254, 89, 194, 0.3),
-									rgb(23, 14, 49) 83%
+		-45deg,
+		rgb(23, 14, 49) 0%,
+		rgba(254, 89, 194, 0.3),
+		rgb(23, 14, 49) 83%
 	);
 	background-size: 200% auto;
 	transition: background-position 0.4s ease-in-out;
@@ -109,10 +177,10 @@
 
 .gradient-spec-comfort {
 	background-image: linear-gradient(
-									-45deg,
-									#170e31 0%,
-									rgba(200, 255, 0, 0.3),
-									#170e31 83%
+		-45deg,
+		#170e31 0%,
+		rgba(200, 255, 0, 0.3),
+		#170e31 83%
 	);
 	background-size: 200% auto;
 	transition: background-position 0.4s ease-in-out;
@@ -135,25 +203,29 @@
 
 .gradient-header {
 	background-image: linear-gradient(
-									-45deg,
-									#1a1530,
-									#332764 60%,
-									rgb(42, 53, 20) 10%,
-									#000 70%
+		-45deg,
+		$color,
+		$color-secondary 65%,
+		$black-color 75%
 	);
 }
 
 .gradient-services {
 	background-image: linear-gradient(
-									to right,
-									#050202ff 20%,
-									#1c153f 50%,
-									#050202ff 80%
+		to right,
+		#050202ff 20%,
+		#1c153f 50%,
+		#050202ff 80%
 	);
 }
 
 .gradient-title {
-	background-image: linear-gradient(to top, #170e31 10%, #402e6b 50%, #1a1530 100%);
+	background-image: linear-gradient(
+		to top,
+		#170e31 10%,
+		#402e6b 50%,
+		#1a1530 100%
+	);
 }
 
 .gradient-spec-active {
@@ -163,15 +235,11 @@
 
 .gradient-border-right {
 	background-image: linear-gradient(
-									to right,
-									rgba(42, 53, 20, 0.685) 20%,
-									#332764 50%,
-									#2a3514 80%
+		to right,
+		rgba(2, 1, 1) 20%,
+		#332764 50%,
+		#2a3514 80%
 	);
-}
-
-.gradient-border-left {
-	background-image: linear-gradient(to left top, #8164ff 40%, rgb(42, 53, 20) 70%);
 }
 
 .icon-style {
@@ -187,9 +255,10 @@
 	z-index: -1;
 	transform: rotateX(15deg) translateZ(-10px);
 	color: rgba(23, 14, 49, 0.479);
-	text-shadow: 5px 0 5px $color,
-	0 0 10px rgba(125, 248, 255, 0.26),
-	0 0 10px rgba(204, 255, 0, 0.267);
+	text-shadow:
+		1px 0 1px $color,
+		0 0 3px rgba(125, 248, 255, 0.26),
+		0 0 10px rgba(204, 255, 0, 0.267);
 }
 
 // background: linear-gradient(to right, #04d9ff 20%, #ffff 50%, #04d9ff 80%);
@@ -209,50 +278,52 @@
 	display: block;
 	color: $neon-blue;
 	background-image: linear-gradient(
-									to right,
-									currentColor 0%,
-									$liquid-neon 8%,
-									transparent 8%,
-									transparent 92%,
-									$liquid-neon 92%,
-									currentColor 100%
-	),
-	linear-gradient(
-									to right,
-									currentColor 0%,
-									$liquid-neon 8%,
-									transparent 8%,
-									transparent 92%,
-									$liquid-neon 92%,
-									currentColor 100%
-	),
-	linear-gradient(
-									to bottom,
-									currentColor 0%,
-									$liquid-neon 11%,
-									transparent 11%,
-									transparent 89%,
-									$liquid-neon 89%,
-									currentColor 100%
-	),
-	linear-gradient(
-									to bottom,
-									currentColor 0%,
-									$liquid-neon 11%,
-									transparent 11%,
-									transparent 89%,
-									$liquid-neon 89%,
-									currentColor 100%
-	);
+			to right,
+			currentColor 0%,
+			$liquid-neon 8%,
+			transparent 8%,
+			transparent 92%,
+			$liquid-neon 92%,
+			currentColor 100%
+		),
+		linear-gradient(
+			to right,
+			currentColor 0%,
+			$liquid-neon 8%,
+			transparent 8%,
+			transparent 92%,
+			$liquid-neon 92%,
+			currentColor 100%
+		),
+		linear-gradient(
+			to bottom,
+			currentColor 0%,
+			$liquid-neon 11%,
+			transparent 11%,
+			transparent 89%,
+			$liquid-neon 89%,
+			currentColor 100%
+		),
+		linear-gradient(
+			to bottom,
+			currentColor 0%,
+			$liquid-neon 11%,
+			transparent 11%,
+			transparent 89%,
+			$liquid-neon 89%,
+			currentColor 100%
+		);
 	background-repeat: no-repeat;
-	background-position: 0 0,
-	0 100%,
-	0 0,
-	100% 0;
-	background-size: 100% 1px,
-	100% 1px,
-	1px 100%,
-	1px 100%;
+	background-position:
+		0 0,
+		0 100%,
+		0 0,
+		100% 0;
+	background-size:
+		100% 1px,
+		100% 1px,
+		1px 100%,
+		1px 100%;
 	inset: 0.7rem;
 }
 
@@ -321,5 +392,9 @@
 }
 
 .gradient-border-bottom {
-	background-image: linear-gradient(to left top, #8164ff 40%, rgb(42, 53, 20) 70%);
+	background-image: linear-gradient(
+		to left top,
+		rgba(129, 100, 255, 0.61) 45%,
+		rgb(2, 1, 1) 71%
+	);
 }

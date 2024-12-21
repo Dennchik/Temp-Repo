@@ -17,8 +17,8 @@
 		width: 100%;
 		background-size: 111% 200%;
 		background-position: 0 0;
-		transition: opacity 0.7s ease-in-out;
-		animation: fadeOutGradient 0.7s ease-in-out alternate-reverse;
+		transition: opacity 0.5s ease-in-out;
+		animation: fadeOutGradient 0.5s ease-in-out alternate-reverse;
 		@extend .gradient-header;
 	}
 
@@ -34,7 +34,7 @@
 	}
 
 	&.with-border {
-		box-shadow: 0 1px 10px #000;
+		@extend .box-shadow;
 
 		&::before {
 			animation: fadeInGradient 0.7s ease-in-out forwards;
@@ -86,6 +86,11 @@
 		width: 50px;
 		height: 53px;
 		opacity: 0.9;
+
+		@include max-690 {
+			width: 40px;
+			height: 43px
+		}
 	}
 
 	// .header__text
@@ -105,12 +110,18 @@
 		align-items: flex-end;
 		transform: translateY(7px);
 		transition: color 0.4s ease-in-out;
+
 		&:hover {
 			color: $neon-blue;
 		}
 
 		span {
 			opacity: 0.7;
+		}
+
+		@include max-690 {
+			font-size: 28px;
+			transform: translateY(4px);
 		}
 	}
 
@@ -156,10 +167,9 @@
 		.icon-home {
 			&::before {
 				transition: all 0.4s ease 0s;
-				text-shadow:
-					0 0 15px #000,
-					0 0 1em #000,
-					0 0 0.2em blue;
+				text-shadow: 0 0 15px #000,
+				0 0 1em #000,
+				0 0 0.2em blue;
 			}
 		}
 	}
@@ -169,10 +179,9 @@
 		@extend .link_underline;
 
 		span {
-			text-shadow:
-				0 0 15px #000,
-				0 0 1em #000,
-				0 0 0.2em blue;
+			text-shadow: 0 0 15px #000,
+			0 0 1em #000,
+			0 0 0.2em blue;
 		}
 
 		&:not(:first-child) {
@@ -209,11 +218,10 @@
 	&__phone {
 		display: flex;
 		align-items: center;
-		// transform: translateY(9px);
 	}
 
 	.icon-phone-ringing {
-		font-size: 4.2rem;
+		font-size: 4.4rem;
 		color: $electric-lime;
 		margin-right: 1rem;
 		text-shadow: 1px 1px 3px #000;
@@ -224,6 +232,10 @@
 
 		@include screen-425 {
 			margin-right: 0;
+		}
+
+		@include max-690 {
+			font-size: 32px;
 		}
 	}
 
