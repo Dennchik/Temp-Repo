@@ -2,23 +2,22 @@ import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollSmoother } from 'gsap/ScrollSmoother';
+import { applyParallax } from '../../animations/animations.jsx';
 
 import modalOpen from '../../modules/modalOpen.js';
 import returnToSavedPosition from '../../modules/return-position.js';
-import { applyParallax } from '../../animations/animations.jsx';
 
 import { Header } from '../../components/layouts/Header.jsx';
 import { About } from '../../components/sections/About.jsx';
-import { Partners } from '../../components/Partners.jsx';
+import { Partners } from '../../components/sections/Partners.jsx';
 import { Achievements } from '../../components/sections/Achievements.jsx';
 import { Footer } from '../../components/layouts/Footer.jsx';
 import { MenuFloat } from '../../components/layouts/Menu-float.jsx';
 
-
-
-
 gsap.registerPlugin(useGSAP, ScrollSmoother);
+
 const baseUrl = '.';
+
 function AboutPage() {
 	const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
@@ -46,7 +45,22 @@ function AboutPage() {
 		}
 		modalOpen();
 		returnToSavedPosition();
+	}, []);
 
+	useEffect(() => {
+		const hash = window.location.hash; // Получаем якорь из URL
+		if (hash) {
+			const element = document.querySelector(hash); // Находим элемент по якорю
+			if (element) {
+				const headerHeight = document.querySelector(
+					'.header')?.offsetHeight || 0;
+				const offsetTop = element.getBoundingClientRect().top + window.scrollY - headerHeight;// Абсолютная позиция
+				window.scrollTo({
+					top: offsetTop, // Добавляем корректировку отступа
+					behavior: 'smooth', // Плавная прокрутка
+				});
+			}
+		}
 	}, []);
 
 	return (
@@ -60,7 +74,7 @@ function AboutPage() {
 						<section className="main-content__about">
 							<About baseUrl={baseUrl} />
 						</section>
-						<section className="main-content__partners">
+						<section className="main-content__partners" id="partners">
 							<Partners baseUrl={baseUrl} />
 						</section>
 						<section className="main-content__achievements">

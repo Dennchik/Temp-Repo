@@ -7,11 +7,10 @@ import returnToSavedPosition from '../../modules/return-position.js';
 import { applyParallax } from '../../animations/animations.jsx';
 
 import { Header } from '../../components/layouts/Header.jsx';
-import { Categories } from '../../components/Categories.jsx';
-import { Offer } from '../../components/chunks/Offer.jsx';
+import { Categories } from '../../components/sections/Categories.jsx';
 import { Footer } from '../../components/layouts/Footer.jsx';
 import { MenuFloat } from '../../components/layouts/Menu-float.jsx';
-import { Answers } from '../../components/Answers.jsx';
+// import { Answers } from '../../components/sections/Answers.jsx';
 import { FormModal } from '../../components/layouts/FormModal.jsx';
 
 
@@ -38,7 +37,6 @@ function ServicesPage() {
 				};
 			}
 		},
-
 	);
 
 	useEffect(() => {
@@ -58,12 +56,6 @@ function ServicesPage() {
 					<div className="main-content__content" id="content">
 						<section className="main-content__categories">
 							<Categories baseUrl={baseUrl} />
-						</section>
-						<section className="main-content__offer">
-							<Offer baseUrl={baseUrl} />
-						</section>
-						<section className="main-content__questions">
-							<Answers baseUrl={baseUrl} />
 						</section>
 						<footer className="main-content__footer" id="footer">
 							<Footer baseUrl={baseUrl} isHomePage={true} />

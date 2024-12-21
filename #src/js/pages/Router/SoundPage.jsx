@@ -8,14 +8,14 @@ import { applyParallax } from '../../animations/animations.jsx';
 
 import { Header } from '../../components/layouts/Header.jsx';
 import { ServiceSound } from '../../components/categories/ServiceSound.jsx';
-import { Offer } from '../../components/chunks/Offer.jsx';
-import { Answers } from '../../components/Answers.jsx';
+import { Answers } from '../../components/sections/Answers.jsx';
 import { Footer } from '../../components/layouts/Footer.jsx';
 import { MenuFloat } from '../../components/layouts/Menu-float.jsx';
 import { FormModal } from '../../components/layouts/FormModal.jsx';
 
 gsap.registerPlugin(useGSAP, ScrollSmoother);
 const baseUrl = '..';
+
 function SoundPage() {
 	const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
@@ -44,6 +44,22 @@ function SoundPage() {
 		returnToSavedPosition();
 	}, []);
 
+	// Переход к якорю из URL
+	useEffect(() => {
+		const hash = window.location.hash; // Получаем якорь из URL
+		if (hash) {
+			const element = document.querySelector(hash); // Находим элемент по якорю
+			if (element) {
+
+				const offsetTop = element.getBoundingClientRect().top + window.scrollY;
+				window.scrollTo({
+					top: offsetTop + 234, // Добавляем корректировку отступа
+					behavior: 'smooth', // Плавная прокрутка
+				});
+			}
+		}
+	}, []);
+
 	return (
 		<>
 			<header className="page__header">
@@ -52,13 +68,10 @@ function SoundPage() {
 			<main className="page__main-content">
 				<div className="main-content" id="wrapper">
 					<div className="main-content__content" id="content">
-						<section className="main-content__categories-sound">
+						<section className="main-content__categories">
 							<ServiceSound baseUrl={baseUrl} isHomePage={true} />
 						</section>
-						<section className="main-content__offer">
-							<Offer baseUrl={baseUrl} />
-						</section>
-						<section className="main-content__questions">
+						<section className="main-content__questions" id="answers">
 							<Answers baseUrl={baseUrl} />
 						</section>
 						<footer className="main-content__footer" id="footer">
@@ -67,8 +80,6 @@ function SoundPage() {
 					</div>
 				</div>
 			</main>
-
-
 			<div className="page__menu-float">
 				<MenuFloat baseUrl={baseUrl} />
 			</div>

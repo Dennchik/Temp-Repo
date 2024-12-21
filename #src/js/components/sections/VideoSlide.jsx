@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react';
 
 //* ------------------------ Component's MainSlide -----------------------------
 
-export const VideoSlide = ({baseUrl}) => {
+export const VideoSlide = ({ baseUrl }) => {
 	const videoRef = useRef(null);
 	const getPath = (fileName) => {
 		return `${baseUrl}/${fileName}`;
@@ -88,33 +88,33 @@ export const VideoSlide = ({baseUrl}) => {
 					<video
 						ref={videoRef}
 						id="player-id"
-						playsInline
 						className="video-js"
 						preload="auto"
+						muted="muted"
+						playsInline
+						autoPlay
 						loop
-						muted
-					>
-						<source src={getPath('img/audio/showreel-2.mp4')}
-										type="video/mp4" />
+						poster={getPath('img/audio/showreel-1.png')}
+						src={getPath('img/audio/showreel-2.mp4')}>
 					</video>
 				</div>
 				<div className="main-video__content _container">
 					<h1 className="main-slide__title el-slidetitle h1_01901">
 						<span>Видеопродакшн. Создаем</span>
-						<span>видеоролики под ключ</span>
+						<span>видеоролики под&nbsp;ключ</span>
 					</h1>
 					<div className="main-slide__text t_01901">
 						<i className="icon-angles-left-solid _icon"></i>&nbsp;Подготовим КП,
-						а&nbsp;именно напишем идеи и сделаем смету&nbsp;«
+						а&nbsp;именно напишем идеи и&nbsp;сделаем&nbsp;смету&nbsp;
+						<i className="icon-angles-right-solid _icon"></i>
 					</div>
 					<div className="offer-container__button _open-button">
 						<button className="order-button btn-grad"
-										type={'button'}>
+							type={'button'}>
 							<span>оставить заявку</span>
 						</button>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	);
