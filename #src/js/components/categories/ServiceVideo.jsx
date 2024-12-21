@@ -27,6 +27,38 @@ export const ServiceVideo = ({baseUrl}) => {
 	}, []);
 
 	useEffect(() => {
+		const updatePaginationDisplay = () => {
+			const slideBody = document.querySelector('.services-slide__body._swiper');
+			const pagination = document.querySelector('.services-slide__pagination');
+
+			if (slideBody && pagination) {
+				const columns = slideBody.querySelectorAll('.services-slide__column');
+				const isSmallScreen = window.matchMedia('(max-width: 1024px)').matches;
+
+				if (columns.length > 5) {
+					pagination.classList.remove('hidden'); // Показываем элемент
+				} else if (isSmallScreen) {
+					pagination.classList.remove('hidden'); // Скрываем элемент
+				} else {
+					pagination.classList.remove('hidden'); // Показываем для больших
+																								 // экранов
+				}
+			}
+		};
+
+		// Первоначальная проверка
+		updatePaginationDisplay();
+
+		// Отслеживание изменения размеров окна
+		window.addEventListener('resize', updatePaginationDisplay);
+
+		// Убираем обработчик при размонтировании
+		return () => {
+			window.removeEventListener('resize', updatePaginationDisplay);
+		};
+	}, []);
+
+	useEffect(() => {
 		if (!isMobile) {
 			const handleMouseOver = (event) => {
 				const target = event.currentTarget;
@@ -97,32 +129,23 @@ export const ServiceVideo = ({baseUrl}) => {
 		return `${baseUrl}/${fileName}`;
 	};
 	return (
-		<div className="categories">
+		<div className="categories-service">
 			<div className="material-parallax parallax">
 				<div className="parallax__image">
-					<picture>
-						{isWebpSupported() ? (
-								<img className="parallax__image-services bg"
-										 src={getPath('img/main/body/serv_bg_2.webp')}
-										 alt="image" />
-							)
-							: (
-								<img className="parallax__image-services bg"
-										 src={getPath('/img/main/body/serv_bg_2.png')}
-										 alt="image" />
-							)}
-					</picture>
+					<img className="parallax__image-services bg"
+							 src={getPath('/img/parallax/bg_svg.svg')}
+							 alt="image" />
 				</div>
 			</div>
 			<div className="categories__body">
-				<div className="services">
-					<div className="services__body _container">
-						<div className="services__title video-title">Видео</div>
+				<div className="services _container">
+					<div className="services__body">
+						<h1 className="services__title">Видео</h1>
 						<div className="services__content">
 							<div className="services-slide">
 								<div className="services-slide__body slide-services _swiper">
 									<div className="services-slide__column line">
-										<a href={getPath('services/service-sound.html')}
+										<a href={getPath('services/video/video-recording.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -153,16 +176,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_1.webp')}
+																	 src={getPath('img/cards/video/img_1.webp')}
 																	 alt="image-1"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_1.png')}
+																	 src={getPath('img/cards/video/img_1.png')}
 																	 alt="image-1"
 															/>
 														)}
@@ -170,10 +193,10 @@ export const ServiceVideo = ({baseUrl}) => {
 													<picture>
 														{isWebpSupported()
 															? (<img className="services-slide__bg-img"
-																			src={getPath('img/main/body/bg_img.webp')}
+																			src={getPath('img/cards/bg_img.webp')}
 																			alt="bg-image" />)
 															: (<img className="services-slide__bg-img"
-																			src={getPath('img/main/body/bg_img.png')}
+																			src={getPath('img/cards/bg_img.png')}
 																			alt="bg-image" />
 															)}
 													</picture>
@@ -185,7 +208,7 @@ export const ServiceVideo = ({baseUrl}) => {
 										</a>
 									</div>
 									<div className="services-slide__column line">
-										<a href={getPath('service-video.html')}
+										<a href={getPath('services/video/video-reportage.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -207,16 +230,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_2.webp')}
+																	 src={getPath('img/cards/video/img_2.webp')}
 																	 alt="image-2"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_2.png')}
+																	 src={getPath('img/cards/video/img_2.png')}
 																	 alt="image-2"
 															/>
 														)}
@@ -225,26 +248,26 @@ export const ServiceVideo = ({baseUrl}) => {
 														{isWebpSupported() ? (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.webp')}
+																src={getPath('img/cards/bg_img.webp')}
 																alt="bg-img"
 															/>
 														) : (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.png')}
+																src={getPath('img/cards/bg_img.png')}
 																alt="bg-img"
 															/>
 														)}
 													</picture>
 												</div>
 												<div className="services-slide__text">
-													<p>Репортаж (с выездом)</p>
+													<p>Репортаж (с&nbsp;выездом)</p>
 												</div>
 											</div>
 										</a>
 									</div>
 									<div className="services-slide__column line">
-										<a href={getPath('service-text.html')}
+										<a href={getPath('services/video/video-podcasts.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -266,16 +289,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_3.webp')}
+																	 src={getPath('img/cards/video/img_3.webp')}
 																	 alt="image-3"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_3.png')}
+																	 src={getPath('img/cards/video/img_3.png')}
 																	 alt="image-3"
 															/>
 														)}
@@ -284,13 +307,13 @@ export const ServiceVideo = ({baseUrl}) => {
 														{isWebpSupported() ? (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.webp')}
+																src={getPath('img/cards/bg_img.webp')}
 																alt="bg-img"
 															/>
 														) : (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.png')}
+																src={getPath('img/cards/bg_img.png')}
 																alt="bg-img"
 															/>
 														)}
@@ -303,7 +326,7 @@ export const ServiceVideo = ({baseUrl}) => {
 										</a>
 									</div>
 									<div className="services-slide__column line">
-										<a href={getPath('service-events.html')}
+										<a href={getPath('services/video/video-clips.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -325,16 +348,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_4.webp')}
+																	 src={getPath('img/cards/video/img_4.webp')}
 																	 alt="image-4"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_4.png')}
+																	 src={getPath('img/cards/video/img_4.png')}
 																	 alt="image-4"
 															/>
 														)}
@@ -343,13 +366,13 @@ export const ServiceVideo = ({baseUrl}) => {
 														{isWebpSupported() ? (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.webp')}
+																src={getPath('img/cards/bg_img.webp')}
 																alt="bg-img"
 															/>
 														) : (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.png')}
+																src={getPath('img/cards/bg_img.png')}
 																alt="bg-img"
 															/>
 														)}
@@ -362,7 +385,7 @@ export const ServiceVideo = ({baseUrl}) => {
 										</a>
 									</div>
 									<div className="services-slide__column line">
-										<a href={getPath('other-services.html')}
+										<a href={getPath('services/video/video-design.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -384,16 +407,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_5.webp')}
+																	 src={getPath('img/cards/video/img_5.webp')}
 																	 alt="image-5"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_5.png')}
+																	 src={getPath('img/cards/video/img_5.png')}
 																	 alt="image-5"
 															/>
 														)}
@@ -402,26 +425,26 @@ export const ServiceVideo = ({baseUrl}) => {
 														{isWebpSupported() ? (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.webp')}
+																src={getPath('img/cards/bg_img.webp')}
 																alt="bg-img"
 															/>
 														) : (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.png')}
+																src={getPath('img/cards/bg_img.png')}
 																alt="bg-img"
 															/>
 														)}
 													</picture>
 												</div>
 												<div className="services-slide__text">
-													<p>Моушн-дизайн в 2D и 3D</p>
+													<p>Моушн-дизайн в&nbsp;2D&nbsp;и&nbsp;3D</p>
 												</div>
 											</div>
 										</a>
 									</div>
 									<div className="services-slide__column line">
-										<a href={getPath('other-services.html')}
+										<a href={getPath('services/video/video-presentation.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -452,16 +475,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_1.webp')}
+																	 src={getPath('img/cards/video/img_6.webp')}
 																	 alt="image-1"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_1.png')}
+																	 src={getPath('img/cards/video/img_6.png')}
 																	 alt="image-1"
 															/>
 														)}
@@ -469,22 +492,22 @@ export const ServiceVideo = ({baseUrl}) => {
 													<picture>
 														{isWebpSupported()
 															? (<img className="services-slide__bg-img"
-																			src={getPath('img/main/body/bg_img.webp')}
+																			src={getPath('img/cards/bg_img.webp')}
 																			alt="bg-image" />)
 															: (<img className="services-slide__bg-img"
-																			src={getPath('img/main/body/bg_img.png')}
+																			src={getPath('img/cards/bg_img.png')}
 																			alt="bg-image" />
 															)}
 													</picture>
 												</div>
 												<div className="services-slide__text">
-													<p>Моушн-дизайн в 2D и 3D</p>
+													<p>Презентационные ролики</p>
 												</div>
 											</div>
 										</a>
 									</div>
 									<div className="services-slide__column line">
-										<a href={getPath('service-video.html')}
+										<a href={getPath('services/video/video-production.html')}
 											 className="services-slide__content">
 											<div className="services-slide__image el">
 												<div className="services-slide__svg">
@@ -506,16 +529,16 @@ export const ServiceVideo = ({baseUrl}) => {
 														</g>
 													</svg>
 												</div>
-												<div>
+												<div className="services-slide__picture">
 													<picture>
 														{isWebpSupported() ? (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_2.webp')}
+																	 src={getPath('img//cards/video/img_7.webp')}
 																	 alt="image-2"
 															/>
 														) : (
 															<img className="services-slide__img"
-																	 src={getPath('img/main/body/img_2.png')}
+																	 src={getPath('img//cards/video/img_7.png')}
 																	 alt="image-2"
 															/>
 														)}
@@ -524,20 +547,79 @@ export const ServiceVideo = ({baseUrl}) => {
 														{isWebpSupported() ? (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.webp')}
+																src={getPath('img/cards/bg_img.webp')}
 																alt="bg-img"
 															/>
 														) : (
 															<img
 																className="services-slide__bg-img"
-																src={getPath('img/main/body/bg_img.png')}
+																src={getPath('img/cards/bg_img.png')}
 																alt="bg-img"
 															/>
 														)}
 													</picture>
 												</div>
 												<div className="services-slide__text">
-													<p>Репортаж (с выездом)</p>
+													<p>Кинопроизводство</p>
+												</div>
+											</div>
+										</a>
+									</div>
+									<div className="services-slide__column line">
+										<a href={getPath('services/video/video-redaction.html')}
+											 className="services-slide__content">
+											<div className="services-slide__image el">
+												<div className="services-slide__svg">
+													<svg viewBox="0 0 700 430">
+														<g
+															fill="none"
+															fillRule="evenodd"
+															stroke="currentColor"
+															strokeWidth="1"
+															className="lines"
+														>
+															<style type="text/css">
+																{`.el{fill:none;stroke:#fff;stroke-width:8;stroke-miterlimit:10;}`}
+															</style>
+															<path
+																className="el"
+																d="M696.2,7.5c-34.2,148.6-72,277.8-101.4,275c-33.3-3.2-35.5-173-68.4-175c-43.1-2.6-78.4,285.7-134.4,285C352.4,392,352.9,248,282.5,221.2c-71.8-27.3-181.8,81-278.7,201.2"
+															/>
+														</g>
+													</svg>
+												</div>
+												<div className="services-slide__picture">
+													<picture>
+														{isWebpSupported() ? (
+															<img className="services-slide__img"
+																	 src={getPath('img/cards/video/img_8.webp')}
+																	 alt="image-2"
+															/>
+														) : (
+															<img className="services-slide__img"
+																	 src={getPath('img/cards/video/img_8.png')}
+																	 alt="image-2"
+															/>
+														)}
+													</picture>
+													<picture>
+														{isWebpSupported() ? (
+															<img
+																className="services-slide__bg-img"
+																src={getPath('img/cards/bg_img.webp')}
+																alt="bg-img"
+															/>
+														) : (
+															<img
+																className="services-slide__bg-img"
+																src={getPath('img/cards/bg_img.png')}
+																alt="bg-img"
+															/>
+														)}
+													</picture>
+												</div>
+												<div className="services-slide__text">
+													<p>Видеомонтаж</p>
 												</div>
 											</div>
 										</a>
@@ -545,12 +627,14 @@ export const ServiceVideo = ({baseUrl}) => {
 								</div>
 								<div className="services-slide__pagination"></div>
 							</div>
-							<div className="hr-shelf"></div>
 						</div>
 					</div>
 				</div>
-				{<Offer baseUrl={baseUrl} />}
 			</div>
+			<div className="hr-shelf _container">
+				<div className="hr-shelf__content"></div>
+			</div>
+			{<Offer baseUrl={baseUrl} />}
 		</div>
 	);
 };
